@@ -23,12 +23,12 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/api/")
 public class TrainingCenterController {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(TrainingCenterController.class);
 
 	@Autowired
 	private TrainingCenterService service;
-	
+
 	/**
 	 * This API is used to create training center
 	 * 
@@ -44,12 +44,12 @@ public class TrainingCenterController {
 		try {
 			return service.createTrainingCenter(createRequest);
 		} catch (Exception e) {
-			logger.info(e.getMessage());
+			logger.error("Error creating training center: {}", e.getMessage());
 			response.sendError(HttpStatus.BAD_REQUEST.value());
 		}
 		return null;
 	}
-	
+
 	/**
 	 * This API is used to get the list of training centers
 	 * 
@@ -57,13 +57,13 @@ public class TrainingCenterController {
 	 * @return
 	 * @throws IOException
 	 */
-	
+
 	@GetMapping("get/training/center/list")
 	public List<TrainingCenter> trainingCenterList(HttpServletResponse response) throws IOException {
 		try {
 			return service.trainingCenterList();
 		} catch (Exception e) {
-			logger.info(e.getMessage());
+			logger.error("Error fetching training center list: {}", e.getMessage());
 			response.sendError(HttpStatus.BAD_REQUEST.value());
 		}
 		return null;
