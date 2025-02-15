@@ -3,6 +3,7 @@ package com.training.center.request;
 import java.util.List;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
@@ -24,7 +25,7 @@ public class TrainingCenterCreateRequest {
 	@Pattern(regexp = "^\\d{10}$", message = "Invalid phone no.It should be a 10 digit no")
 	private String phone;
 
-	@NotBlank(message = "Address is mandatory")
+	@NotNull(message = "Address is mandatory")
 	private AddressRequest address;
 	private long studentCapacity;
 	private List<String> courses;
