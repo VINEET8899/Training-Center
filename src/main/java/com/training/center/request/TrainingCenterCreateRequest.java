@@ -8,22 +8,23 @@ import jakarta.validation.constraints.Size;
 
 public class TrainingCenterCreateRequest {
 
-	@NotBlank(message = "Center Name cannot be blank")
-	@Size(max = 40, message = "Center Name must be of less than 40 characters")
+	@NotBlank(message = "Center name is mandatory")
+	@Size(max = 40, message = "Center name must be of less than 40 characters")
 	private String centerName;
 
 	@NotBlank(message = "Center code is mandatory")
 	@Size(max = 12, message = "Center code must be of exactly 12 characters")
 	private String centerCode;
 
-	@NotBlank(message = "Email is required")
+	@NotBlank(message = "Email is mandatory")
 	@Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$", message = "Invalid email format")
 	private String email;
 
-	@NotBlank(message = "Phone number is required")
+	@NotBlank(message = "Phone number is mandatory")
 	@Pattern(regexp = "^\\d{10}$", message = "Invalid phone no.It should be a 10 digit no")
 	private String phone;
 
+	@NotBlank(message = "Address is mandatory")
 	private AddressRequest address;
 	private long studentCapacity;
 	private List<String> courses;
